@@ -26,7 +26,13 @@ Compile and run the program using the following commands:
 
 ```bash
     gcc calc.c -o calc
-    ./calc
+    ./calc 24 + 12
+```
+
+## output
+
+```bash
+    The result is: 36
 ```
 
 # Number Analyzer in C
@@ -40,6 +46,15 @@ Compile and run the program using the following commands:
 ```bash
     gcc numAnalyzer.c -o numAnalyzer
     ./numAnalyzer 1 2 3 4 5
+```
+
+## output
+
+```bash
+    Count: 5
+    Minimum: 1
+    Maximum: 5
+    Average: 3.00
 ```
 
 > Built for learning by `Debanjan`
