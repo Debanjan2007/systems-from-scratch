@@ -1,6 +1,6 @@
 ﻿# atoi()
 
-> atoi() is a built in funtion i C sits inside the `stdlib.h` header file.
+> atoi() is a built in funtion in C sits inside the `stdlib.h` header file.
 
 ```mermaid
 graph TD
