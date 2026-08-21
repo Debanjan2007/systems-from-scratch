@@ -12,8 +12,6 @@ int main(int argc , char *argv[]) {
     num1 = atoi(argv[1]);
     num2 = atoi(argv[3]);
     operator = (char)*argv[2];
-    printf("The numbers are: %d %d\n",num1,num2);
-    printf("The operator is: %c\n",operator);
     switch(operator){
         case '+': 
             res = num1 + num2;
@@ -32,7 +30,7 @@ int main(int argc , char *argv[]) {
             res = (int) num1 / num2;
             break;
         default:
-            printf("\nCan't operate!");
+            printf("\nCan't operate! Please enter a valid operator.");
             return 0;
     }
     printf("The result is: %d\n",res);
