@@ -7,7 +7,10 @@
 | Calculator      | ✅ |
 | Number Analyzer | ✅ |
 | String Reverse  | ✅ |
-| Pointer Swap    | ❌ |
+| Pointer Swap    | ✅ |
+| strlen()    | ✅ |
+| memcpy()    | ❌ |
+
 
 Copy code
 
@@ -73,5 +76,23 @@ This program takes a list of strings as command line arguments and reverses the 
 ```bash
     Reversed string: gnimmargorP C dlroW olleH
 ```
+
+# String Length
+
+Built my own string lenggth calculator. It takes an array of charecters or a string and returns the length of the string.
+
+## How to run the program
+
+```c
+    gcc .\strLen.c -o strlen
+    ./strlen "Hello World"
+```
+
+## Output
+
+```c
+    Length is: 11
+```
+
 
 > Built for learning by `Debanjan`
