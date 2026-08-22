@@ -85,3 +85,5 @@ Instead:
 You pass something like: 8 bytes on a 64-bit system.
 
 The function gets the address of the data, not a copy of the entire dataset.
+
+And at the end most obvious implementation of pointers is Linkedlist.
