@@ -9,7 +9,7 @@
 | String Reverse | ✅ |
 | Pointer Swap | ✅ |
 | strlen() | ✅ |
-| memcpy() | ❌ |
+| memcpy() | ✅ |
 
 Copy code
 
