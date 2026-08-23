@@ -2,15 +2,14 @@
 
 *this repo is all about my re-learning of C*
 
-| Table of content    | Completed |
-|---------------------|:---------:|
-| Calculator      | ✅ |
+| Table of content | Completed |
+| --------------------- | :---------: |
+| Calculator | ✅ |
 | Number Analyzer | ✅ |
-| String Reverse  | ✅ |
-| Pointer Swap    | ✅ |
-| strlen()    | ✅ |
-| memcpy()    | ❌ |
-
+| String Reverse | ✅ |
+| Pointer Swap | ✅ |
+| strlen() | ✅ |
+| memcpy() | ❌ |
 
 Copy code
 
@@ -94,5 +93,59 @@ Built my own string lenggth calculator. It takes an array of charecters or a str
     Length is: 11
 ```
 
+## Copy of memcpy()
+
+memcpy() takes destination and source with the size in bytes.I build my_memcpy().
+
+## How to use the program
+
+### Input
+
+```c
+    int main(){
+        int a[] = {1 , 25 , 45 , 88};
+        int b[4];
+        printf("Before :");
+        for(int i = 0 ; i < 4 ; i++){
+            printf("a%d = %d \n",i,a[i]);
+            printf("b%d = %d \n",i,b[i]);
+        }
+        my_memcpy(&b , &a , sizeof(a));
+        printf("After :");
+        for(int i = 0 ; i < 4 ; i++){
+            printf("a%d = %d \n",i,a[i]);
+            printf("b%d = %d \n",i,b[i]);
+        }
+        return 0;
+    }
+```
+
+Run
+
+```bash
+    gcc myMemcpy.c -o memcpy
+    ./memcpy
+```
+
+## Output
+
+```bash
+    Before :a0 = 1 
+    b0 = -2 
+    a1 = 25 
+    b1 = 6422280 
+    a2 = 45 
+    b2 = 1987415069 
+    a3 = 88 
+    b3 = 4201056 
+    After :a0 = 1 
+    b0 = 1 
+    a1 = 25 
+    b1 = 25 
+    a2 = 45 
+    b2 = 45 
+    a3 = 88 
+    b3 = 88 
+```
 
 > Built for learning by `Debanjan`
