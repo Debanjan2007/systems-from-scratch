@@ -2,6 +2,7 @@
 
 *this repo is all about my re-learning of C*
 
+
 | Table of content | Completed |
 | --------------------- | :---------: |
 | Calculator | ✅ |
@@ -10,6 +11,7 @@
 | Pointer Swap | ✅ |
 | strlen() | ✅ |
 | memcpy() | ✅ |
+| Dynamic array | ❌ |
 
 Copy code
 
