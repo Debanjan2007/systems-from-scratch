@@ -11,7 +11,7 @@
 | Pointer Swap | ✅ |
 | strlen() | ✅ |
 | memcpy() | ✅ |
-| Dynamic array | ❌ |
+| Dynamic array | ✅ |
 
 Copy code
 
@@ -149,5 +149,18 @@ Run
     a3 = 88 
     b3 = 88 
 ```
+
+# Dynamic Array
+
+An dynamic array that doesn't stored in the stack instead it is stored in the heap by using the malloc() function.
+
+## How to run the program
+
+```bash
+    gcc DynamicIntArray.c -o dynamicArr.exe
+    ./dynamicArr.exe
+```
+
+then follow the prompts 
 
 > Built for learning by `Debanjan`

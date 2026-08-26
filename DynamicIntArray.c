@@ -14,10 +14,9 @@ int main(){
     puts("");
     for(int i = 0 ; i < n ; i++){
         int temp ;
-        printf("Enter %dth number : ",i);
-        scanf("%d ",&temp);
+        printf("Enter %dth element: ",i);
+        scanf("%d",&temp);
         *(arr + i) = temp ;
-        // *(arr + i) = rand() * 100;
     }
     printf("\nThe array is :\n");
     for(int i = 0 ; i < n ; i++){
