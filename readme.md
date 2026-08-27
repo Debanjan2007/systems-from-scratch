@@ -12,6 +12,7 @@
 | strlen() | ✅ |
 | memcpy() | ✅ |
 | Dynamic array | ✅ |
+| Stack | ✅ |
 
 Copy code
 
@@ -162,5 +163,16 @@ An dynamic array that doesn't stored in the stack instead it is stored in the he
 ```
 
 then follow the prompts 
+
+# Stack implementation
+
+Stack implementation in C 
+
+## How to run the program
+
+```bash
+    gcc stack.c -o stack
+    .\stack.exe
+```
 
 > Built for learning by `Debanjan`
