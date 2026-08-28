@@ -13,6 +13,7 @@
 | memcpy() | ✅ |
 | Dynamic array | ✅ |
 | Stack | ✅ |
+| Dynamic String | ✅ |
 
 Copy code
 
@@ -173,6 +174,39 @@ Stack implementation in C
 ```bash
     gcc stack.c -o stack
     .\stack.exe
+```
+
+# Dynamic string
+
+This is a real dynamic string where user doesn't need to put any length at first. A user can just type it will automatically detect the length. Here i start with 4 bytes then updates the it by 2 factor automatically as it needed no unneccessary memory headeache.
+
+## Problem
+
+My major question was when do I reacllocates the memory and if reallocates then how do I add more content or charecters.
+
+## Solution
+
+To solve this problem I used stack to push contents and made a global stack that points to a heap address.
+
+```mermaid
+graph TD
+    A[getchar] --> B[charecter] --> C[push] --> D[dynamic memory] --> E[grow memory if needed] --> F[read]
+
+```
+
+## How to run the program
+
+```bash
+    gcc .\dynamicString.c -o dynStr
+    .\dynStr.exe
+    Enter your string:<enter your content>
+```
+
+## Output
+
+```bash
+    <enter your content>
+    EOF
 ```
 
 > Built for learning by `Debanjan`
