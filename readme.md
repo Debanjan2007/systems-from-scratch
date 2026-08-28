@@ -1,212 +1,379 @@
-﻿# C programs
+# C Programming — Relearning From the Low Level
 
-*this repo is all about my re-learning of C*
+> A collection of C programs I'm building while revisiting C, memory management, pointers, data structures, and low-level programming concepts.
 
+I'm using this repository to move beyond simply *writing C syntax* and understand what is actually happening with **memory, pointers, arrays, dynamic allocation, and data structures**.
 
-| Table of content | Completed |
-| --------------------- | :---------: |
-| Calculator | ✅ |
-| Number Analyzer | ✅ |
-| String Reverse | ✅ |
-| Pointer Swap | ✅ |
-| strlen() | ✅ |
-| memcpy() | ✅ |
-| Dynamic array | ✅ |
-| Stack | ✅ |
-| Dynamic String | ✅ |
+The programs start simple and gradually become more memory-oriented.
 
-Copy code
+---
 
-```bash
-    git clone https://github.com/Debanjan2007/c-programs.git Cprogram
-    cd Cprogram
-```
+## 🧭 Learning Progress
 
-# Calculator in C
+| Topic                        | Status |
+| :--------------------------- | :----: |
+| 🧮 Calculator                |    ✅   |
+| 🔢 Number Analyzer           |    ✅   |
+| 🔄 String Reverse            |    ✅   |
+| 👉 Pointer Swap              |    ✅   |
+| 📏 `strlen()` implementation |    ✅   |
+| 📦 `memcpy()` implementation |    ✅   |
+| 📈 Dynamic Array             |    ✅   |
+| 📚 Stack                     |    ✅   |
+| 🧵 Dynamic String            |    ✅   |
 
-Here is a CLI calculator program written in C. It can perform basic arithmetic operations like addition, subtraction, multiplication, and division. Division result is not a double, it is an integer. The program takes two numbers and an operator as input from the user and displays the result.
+> **Current focus:** Understanding dynamic memory and building small data structures without relying on high-level abstractions.
 
-## how to run the program
+---
 
-Compile and run the program using the following commands:
+## 🧠 What I'm Practicing
 
-```bash
-    gcc calc.c -o calc
-    ./calc 24 + 12
-```
+This repository is mainly about getting comfortable with:
 
-## output
+* Pointers and pointer arithmetic
+* Stack vs heap memory
+* `malloc()`, `realloc()` and `free()`
+* Arrays and dynamically allocated memory
+* C strings and the `'\0'` terminator
+* Command-line arguments
+* Implementing standard-library concepts myself
+* Basic data structures
+* Memory ownership and lifetime
+* Thinking about programs at a lower level
 
-```bash
-    The result is: 36
-```
+---
 
-# Number Analyzer in C
+# 📂 Programs
 
-This program takes a list of numbers as command line arguments and analyzes them to find the count, minimum, maximum, and average of the numbers. The program uses the `atoi` function to convert the command line arguments from strings to integers.
+## 🧮 Calculator
 
-## how to run the program
+A simple command-line calculator supporting basic arithmetic operations.
 
-Compile and run the program using the following commands:
-
-```bash
-    gcc numAnalyzer.c -o numAnalyzer
-    ./numAnalyzer 1 2 3 4 5
-```
-
-## output
+### Example
 
 ```bash
-    Count: 5
-    Minimum: 1
-    Maximum: 5
-    Average: 3.00
+gcc calc.c -o calc
+./calc 24 + 12
 ```
 
-# String Reverse in C
+```text
+The result is: 36
+```
 
-This program takes a list of strings as command line arguments and reverses the order of the strings. The program uses a simple algorithm to swap the first and last strings, then the second and second last strings, and so on until all the strings are reversed.
+---
 
-## How to run the program
+## 🔢 Number Analyzer
+
+Takes numbers through command-line arguments and calculates:
+
+* Count
+* Minimum
+* Maximum
+* Average
+
+It also introduces processing `argv` and converting strings into integers.
+
+### Example
 
 ```bash
-    gcc strngReverse.c -o strngReverse
-    ./strngReverse "Hello" "World" "C" "Programming"
+gcc numAnalyzer.c -o numAnalyzer
+./numAnalyzer 1 2 3 4 5
 ```
 
-## Output
+```text
+Count: 5
+Minimum: 1
+Maximum: 5
+Average: 3.00
+```
+
+---
+
+## 🔄 String Reverse
+
+A simple string-reversal implementation using character manipulation and indexing.
 
 ```bash
-    Reversed string: gnimmargorP C dlroW olleH
+gcc strngReverse.c -o strngReverse
+./strngReverse "Hello World"
 ```
 
-# String Length
+---
 
-Built my own string lenggth calculator. It takes an array of charecters or a string and returns the length of the string.
+## 👉 Pointer Swap
 
-## How to run the program
+A small exercise focused on understanding pointers by swapping values through memory addresses.
+
+---
+
+## 📏 Implementing `strlen()`
+
+Instead of directly using the standard `strlen()`, I implemented a simple version to understand how C determines the length of a null-terminated string.
+
+### What this taught me
+
+A C string doesn't store its length by default.
+
+Instead, the program walks through memory until it encounters:
 
 ```c
-    gcc .\strLen.c -o strlen
-    ./strlen "Hello World"
+'\0'
 ```
 
-## Output
+---
+
+## 📦 Implementing `memcpy()`
+
+I implemented a simplified version of `memcpy()` to understand how raw bytes can be copied from one memory location to another.
+
+The important part here was understanding why `memcpy()` requires a **size in bytes** rather than knowing the type of the data automatically.
+
+### Example
 
 ```c
-    Length is: 11
+int a[] = {1, 25, 45, 88};
+int b[4];
+
+my_memcpy(&b, &a, sizeof(a));
 ```
 
-## Copy of memcpy()
+This exercise helped me understand:
 
-memcpy() takes destination and source with the size in bytes.I build my_memcpy().
+* Memory addresses
+* Byte-level copying
+* `sizeof`
+* Pointer manipulation
+* Why the size parameter matters
 
-## How to use the program
+---
 
-### Input
+# 📈 Dynamic Array
+
+A dynamically allocated integer array using heap memory.
+
+Instead of fixing the array size at compile time, memory is allocated at runtime using:
 
 ```c
-    int main(){
-        int a[] = {1 , 25 , 45 , 88};
-        int b[4];
-        printf("Before :");
-        for(int i = 0 ; i < 4 ; i++){
-            printf("a%d = %d \n",i,a[i]);
-            printf("b%d = %d \n",i,b[i]);
-        }
-        my_memcpy(&b , &a , sizeof(a));
-        printf("After :");
-        for(int i = 0 ; i < 4 ; i++){
-            printf("a%d = %d \n",i,a[i]);
-            printf("b%d = %d \n",i,b[i]);
-        }
-        return 0;
-    }
+malloc()
 ```
 
-Run
+and expanded when required using:
+
+```c
+realloc()
+```
+
+This was my first step toward understanding how dynamic data structures work underneath.
+
+---
+
+# 📚 Stack Implementation
+
+A basic stack implemented using an array and a `top` index.
+
+The core operations are:
+
+```text
+push()
+pop()
+peek()
+```
+
+This exercise connects C memory management with an actual data structure rather than treating arrays as isolated language features.
+
+---
+
+# 🧵 Dynamic String
+
+This is currently one of the more interesting exercises in the repository.
+
+The goal was simple:
+
+> **Let the user enter a string of unknown length without asking for the length beforehand.**
+
+Instead of doing something like:
+
+```c
+char buffer[10000];
+```
+
+the program starts with a small heap allocation and grows the buffer when necessary.
+
+### The basic idea
+
+```text
+              getchar()
+                  │
+                  ▼
+             character
+                  │
+                  ▼
+                push()
+                  │
+                  ▼
+          ┌───────────────┐
+          │ Buffer full?  │
+          └───────┬───────┘
+              Yes │ No
+                  │
+          ┌───────▼───────┐
+          │   realloc()   │
+          │ grow capacity │
+          └───────┬───────┘
+                  │
+                  ▼
+            store character
+                  │
+                  ▼
+              next input
+```
+
+### Memory Growth
+
+The buffer starts with a small capacity:
+
+```text
+4 bytes
+```
+
+When it becomes full, the capacity is doubled:
+
+```text
+4 → 8 → 16 → 32 → 64 → ...
+```
+
+This avoids allocating an unnecessarily large buffer at the beginning while also avoiding a `realloc()` on every single character.
+
+### Input Model
+
+The program consumes the input character by character:
+
+```c
+while ((ch = getchar()) != '\n' && ch != EOF) {
+    push(ch);
+}
+```
+
+After the input is complete, the null terminator is added:
+
+```c
+stack[++top] = '\0';
+```
+
+So the resulting memory looks like:
+
+```text
+┌─────┬─────┬─────┬─────┬─────┬──────┐
+│  h  │  e  │  l  │  l  │  o  │ '\0' │
+└─────┴─────┴─────┴─────┴─────┴──────┘
+   0     1     2     3     4      5
+```
+
+### The Problem
+
+The interesting part wasn't simply learning how to call `realloc()`.
+
+The real question was:
+
+> **If I don't know the length of the input beforehand, when should I allocate more memory, and how do I continue writing into the newly allocated region?**
+
+Thinking about the problem as a **stack + dynamic array** made the solution much easier to reason about.
+
+---
+
+# 🧩 What I'm Learning From These Exercises
+
+The progression is intentional:
+
+```text
+Basic C
+   ↓
+Pointers
+   ↓
+Memory manipulation
+   ↓
+Dynamic allocation
+   ↓
+Data structures
+   ↓
+Dynamic memory + data structures
+```
+
+I'm trying to understand not just **how to write C**, but why things such as strings, arrays, buffers, and data structures work the way they do underneath.
+
+---
+
+## 🛠️ Build & Run
+
+Most programs can be compiled with GCC.
+
+For example:
 
 ```bash
-    gcc myMemcpy.c -o memcpy
-    ./memcpy
+gcc dynamicString.c -o dynamicString
+./dynamicString
 ```
 
-## Output
+On Windows:
 
 ```bash
-    Before :a0 = 1 
-    b0 = -2 
-    a1 = 25 
-    b1 = 6422280 
-    a2 = 45 
-    b2 = 1987415069 
-    a3 = 88 
-    b3 = 4201056 
-    After :a0 = 1 
-    b0 = 1 
-    a1 = 25 
-    b1 = 25 
-    a2 = 45 
-    b2 = 45 
-    a3 = 88 
-    b3 = 88 
+gcc dynamicString.c -o dynamicString
+.\dynamicString.exe
 ```
 
-# Dynamic Array
+---
 
-An dynamic array that doesn't stored in the stack instead it is stored in the heap by using the malloc() function.
+## 🗺️ Roadmap
 
-## How to run the program
+More low-level exercises will be added as I progress.
 
-```bash
-    gcc DynamicIntArray.c -o dynamicArr.exe
-    ./dynamicArr.exe
-```
+### Data Structures
 
-then follow the prompts 
+* [ ] Linked List
+* [ ] Queue
+* [ ] Circular Queue
+* [ ] Binary Search Tree
+* [ ] Hash Table
 
-# Stack implementation
+### Memory & Systems
 
-Stack implementation in C 
+* [ ] Custom string utilities
+* [ ] Better dynamic buffer
+* [ ] File handling
+* [ ] Binary file processing
+* [ ] Memory allocator experiments
 
-## How to run the program
+### Networking
 
-```bash
-    gcc stack.c -o stack
-    .\stack.exe
-```
+* [ ] TCP client
+* [ ] TCP server
+* [ ] Simple HTTP client
+* [ ] Basic socket experiments
 
-# Dynamic string
+### Later
 
-This is a real dynamic string where user doesn't need to put any length at first. A user can just type it will automatically detect the length. Here i start with 4 bytes then updates the it by 2 factor automatically as it needed no unneccessary memory headeache.
+The long-term goal is to move from small C exercises toward **actual systems programming projects**.
 
-## Problem
+---
 
-My major question was when do I reacllocates the memory and if reallocates then how do I add more content or charecters.
+## 📌 Repository Philosophy
 
-## Solution
+This isn't intended to be a collection of perfect or production-ready C libraries.
 
-To solve this problem I used stack to push contents and made a global stack that points to a heap address.
+It's a record of my progression toward understanding **C, memory, data structures, and systems-level programming**.
 
-```mermaid
-graph TD
-    A[getchar] --> B[charecter] --> C[push] --> D[dynamic memory] --> E[grow memory if needed] --> F[read]
+Some implementations may be simple. Some may eventually be rewritten.
 
-```
+That's intentional.
 
-## How to run the program
+> **Learn → Build → Break → Understand → Improve**
 
-```bash
-    gcc .\dynamicString.c -o dynStr
-    .\dynStr.exe
-    Enter your string:<enter your content>
-```
+---
 
-## Output
+## 👨‍💻 About
 
-```bash
-    <enter your content>
-    EOF
-```
+**Debanjan**
 
-> Built for learning by `Debanjan`
+Learning C by going closer to the machine — one memory allocation at a time.
+
+[GitHub](https://github.com/Debanjan2007)
