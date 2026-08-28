@@ -3,13 +3,19 @@
 
 char *stack ;
 int top = -1 ;
-const start_size = sizeof(char) * 4;
-int capacity = start_size;
+const int start_size = sizeof(char) * 4;
+int capacity = 4; // set to 4 as start_size is 4bytes
 
 void push(char ch){
-    if(top == start_size - 1){
+    if(top == capacity - 1){
         capacity *= 2 ;
-        stack = realloc(stack, capacity); // reallocating memory by one
+        char *temp = realloc(stack, capacity); // reallocating memory
+        if(temp == NULL){
+            free(stack);
+            perror("Error: Reallocation failed\n");
+            return;
+        }
+        stack = temp;
         stack[++top] = ch;
         return;
     }
@@ -22,21 +28,23 @@ void read(){
         perror("Error: nothing ini the memory\n");
         return ;
     }
-    for(int i = 0 ; i <= top ; i++){
-        printf("%c",stack[i]);
-    }
+    printf("%s",stack);
     printf("\nEOF");
     return ;
 }
 
 int main(){
     stack = malloc(start_size); // starting with 4 bytes
+    if(stack == NULL){
+        perror("Error: Stack allocation failed!\n");
+        return 1;
+    }
     int ch ; 
     printf("Enter your string:");
     while((ch = getchar()) != '\n' && ch != EOF){
-        printf("Loop grabbed: %c\n", ch);
         push(ch);
     }
+    stack[++top] = '\0';
     read();
     free(stack);
     return 0;
